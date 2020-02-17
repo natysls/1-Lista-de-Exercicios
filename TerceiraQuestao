@@ -1,0 +1,56 @@
+/*
+Faça um algoritmo que leia um vetor de inteiros de 10 posições:
+a. Informe se existe algum número repetido e que número é esse
+b. Informe quantos números menores do que 0 existem no vetor
+c. Informe a soma de todos os números do vetor
+d. Imprima o vetor em ordem inversa
+e. Ordene o vetor de menor para o maior número
+*/
+import java.util.Arrays;
+import java.util.Scanner;
+public class TerceiraQuestao {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int vetor[] = new int[10];
+        for(int i=0; i<10; i++){
+            System.out.println("Coloque o elemento " + (i+1) + " : ");
+            int valorObtido = scanner.nextInt();
+            vetor[i] = valorObtido;
+        }
+        System.out.println("Existe algum numero repetido? Se sim, qual? ");
+        //Arrays.sort(vetor); // ordenar o array
+        for (int i = 0; i < 10; i++){
+            if(vetor[i] == vetor[i+1]){
+                System.out.println("O elemento " + vetor[i] + " repete ");
+            }
+        }
+        System.out.println("Quantos números menores do que 0 existem no vetor? ");
+        int Menor0 = 0;
+        for(int i=0; i<vetor.length; i++){
+            if(vetor[i] == 0){
+                Menor0++;
+            }
+        }
+        System.out.println("Qual a soma de todos os números do vetor?");
+        int soma = 0;
+        for(int i=0; i < vetor.length; i++){
+            soma += vetor[i];
+        }
+        System.out.println("Qual o vetor em ordem inversa?");
+        for(int i = 0; i<vetor.length/2; i++){
+            int aux = vetor[i];
+            vetor[i] = vetor[vetor.length - i - 1];
+            vetor[vetor.length - i - 1] = aux;
+        }
+        System.out.println("Ordene o vetor de menor para o maior número");
+        for(int i = 0; i<vetor.length/2; i++){
+            for(int j=0; j<vetor.length-1; j++){
+                if(vetor[j] < vetor[j+1]){
+                    int aux = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1]= aux;
+                }
+            }
+        }
+    }
+}
